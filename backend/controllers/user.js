@@ -7,10 +7,10 @@ exports.loginUser = (req, res, next) => {
     User.findOne({ username: req.body.username })
       .then(user => {
         if (!user) {
-          return res.status(200).json({
-            msg: "Unauthorized",
-            flag: 0
-          });
+          // return res.status(200).json({
+          //   msg: "Unauthorized",
+          //   flag: 0
+          // });
         }
         fetchedUser = user;
         return bcrypt.compare(req.body.password, user.password);
@@ -31,7 +31,8 @@ exports.loginUser = (req, res, next) => {
   
       })
       .catch(err => {
-        return res.status(500).json({});
+    
+        return res.status(401).json({});
       });
   }
 
@@ -39,7 +40,7 @@ exports.loginUser = (req, res, next) => {
     return res.status(200).json({
       msg: "success"
    
-    });
+    }); 
   }
 
   exports.bcrypt_it = (req, res, next) => { 
