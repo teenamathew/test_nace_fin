@@ -3,18 +3,17 @@ import { environment } from '../../environments/environment'
 
 const backend_def =  environment.apiUrl;
 
-// ALL THE REST API PATHS HERE
-const login_route_endpoint = backend_def + 'user/login';
-// ALL THE REST API PATHS HERE
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiEndpointsService {
 
-  constructor() { }
+  // ALL THE REST API PATHS HERE
+  login_route_endpoint = backend_def + 'user/login';
+  // ALL THE REST API PATHS HERE
 
-  get_login_route_endpoint() {
-    return login_route_endpoint;
-  }
+  constructor() {  }
+
 }

@@ -18,7 +18,7 @@ export class AuthService {
   login(username: string, password: string): Observable<{msg: string, flag: number}>  {
     const authData: AuthData = { username: username, password: password };
     return this.http.post<{msg: string, flag: number}>(
-      this.api_obj.get_login_route_endpoint(),
+      this.api_obj.login_route_endpoint,
         authData
       ).pipe(catchError(this.errorHandler));
       }
