@@ -6,12 +6,6 @@ exports.loginUser = (req, res, next) => {
   
     User.findOne({ username: req.body.username })
       .then(user => {
-        if (!user) {
-          // return res.status(200).json({
-          //   msg: "Unauthorized",
-          //   flag: 0
-          // });
-        }
         fetchedUser = user;
         return bcrypt.compare(req.body.password, user.password);
         // return (req.body.password == user.password);
@@ -27,11 +21,8 @@ exports.loginUser = (req, res, next) => {
             msg: fetchedUser.name + " <br>logged in",
             flag: 1
           });
-  
-  
       })
       .catch(err => {
-    
         return res.status(401).json({});
       });
   }
