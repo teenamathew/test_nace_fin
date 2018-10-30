@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { AuthData } from '../common_interfaces/auth-data.model';
-
+import { environment } from '../../environments/environment'
 // for http error handling
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
+import { ApiEndpointsService } from './api-endpoints.service';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +14,11 @@ import { catchError } from 'rxjs/operators';
 export class AuthService {
 
 
-  constructor(private http: HttpClient) { }
-
+  constructor(private http: HttpClient, private api_obj: ApiEndpointsService) { }
   login(username: string, password: string): Observable<{msg: string, flag: number}>  {
     const authData: AuthData = { username: username, password: password };
     return this.http.post<{msg: string, flag: number}>(
-      // change for server
-      'http://localhost:3000/api/user/login',
-      //  'http://nacefin.us-east-2.elasticbeanstalk.com/api/user/login',
+      this.api_obj.get_login_route_endpoint(),
         authData
       ).pipe(catchError(this.errorHandler));
       }
