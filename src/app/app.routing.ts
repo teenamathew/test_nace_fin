@@ -18,7 +18,11 @@ export const AppRoutes: Routes = [ {
           {
         path: '',
         loadChildren: './menu_components/dashboard/dashboard.module#DashboardModule'
-    }
+    },
+    {
+      path: 'kyc',
+      loadChildren: './menu_components/user/kyc/kyc.module#KycModule'
+  }
   ]
 }
       ];

@@ -9,12 +9,12 @@ export const ROUTES: RouteInfo[] = [{
   type: 'link',
   icontype: 'dashboard'
 }
-// , {
-//   path: '/homepage1',
-//   title: 'Homepage1',
-//   type: 'link',
-//   icontype: 'person'
-// }
+, {
+  path: '/kyc',
+  title: 'KYC',
+  type: 'link',
+  icontype: 'person'
+}
 ];
 
 @Injectable({
